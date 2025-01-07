@@ -1,6 +1,8 @@
 # rag-qa-self
 RAG based application on question and answer about myself
 
+I wrote about this in this article: [How I Built a RAG-based AI Chatbot from My Personal Data](https://medium.com/keeping-up-with-ai/how-i-built-a-rag-based-ai-chatbot-from-my-personal-data-88eec0d3483c)
+
 **Overview**
 
 This AI-powered app, built with Streamlit, uses a Large Language Model (LLM) to answer questions based on PDF data about Ana. Key technologies include:
