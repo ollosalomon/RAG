@@ -1,3 +1,13 @@
+# Ignore environment variables
 .env
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+rag_env/
+
+# Ignore specific notebooks
 rag_docs.ipynb
 rag_v2.ipynb

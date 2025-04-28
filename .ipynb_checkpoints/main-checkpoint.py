@@ -4,14 +4,14 @@ import pysqlite3
 import sqlite3
 
 
-st.title("About Ana ✨")
+st.title("About Ollo ✨")
 
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
     
 with st.chat_message("assistant"):
-    st.write("Hello, you can ask me anything about Ana 👋")
+    st.write("Hello, you can ask me anything about Ollo 👋")
     
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:

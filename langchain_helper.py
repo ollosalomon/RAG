@@ -61,11 +61,22 @@ def contextualize_question():
         A retriever object capable of reformulating user queries into standalone questions 
         by leveraging the provided language model, retriever, and prompt.
     """
+    # question_reformulation_prompt = """
+    # Given a chat history and the latest user question \
+    # which might reference context in the chat history, formulate a standalone question \
+    # which can be understood without the chat history. Do NOT answer the question, \
+    # just reformulate it if needed and otherwise return it as is."""
+
+
     question_reformulation_prompt = """
-    Given a chat history and the latest user question \
-    which might reference context in the chat history, formulate a standalone question \
-    which can be understood without the chat history. Do NOT answer the question, \
-    just reformulate it if needed and otherwise return it as is."""
+    Étant donné un historique de chat et la dernière question de l'utilisateur,
+    reformule la question pour qu'elle soit compréhensible de manière autonome, 
+    même sans l'historique. Ne réponds pas à la question, reformule-la uniquement si besoin.
+    ---
+    Given a chat history and the latest user question, 
+    formulate a standalone question which can be understood without the chat history. 
+    Do NOT answer the question, just reformulate it if needed, otherwise return it as is.
+    """
 
     question_reformulation_template = ChatPromptTemplate.from_messages(
         [
@@ -96,12 +107,22 @@ def answer_question():
     rag_chain : RetrievalAugmentedGenerationChain
         A chain that reformulates questions, retrieves relevant context, and generates answers.
     """
-    answer_question_prompt = """ 
-    Use the following pieces of retrieved context to answer the question. \
-    Use three to seven sentences maximum and keep the answer concise, while still giving depth.\
+    # answer_question_prompt = """ 
+    # Use the following pieces of retrieved context to answer the question. \
+    # Use three to seven sentences maximum and keep the answer concise, while still giving depth.\
 
-    {context}"""
-    
+    # {context}"""
+
+    answer_question_prompt = """ 
+    Utilise les éléments de contexte récupérés pour répondre à la question.
+    Use the following pieces of retrieved context to answer the question.
+
+    - Ta réponse doit être concise (entre trois et sept phrases) tout en restant détaillée.
+    - Your answer should be concise (three to seven sentences) but still give enough depth.
+
+    {context}
+    """
+
     answer_question_template = ChatPromptTemplate.from_messages(
         [
             ("system", answer_question_prompt),
